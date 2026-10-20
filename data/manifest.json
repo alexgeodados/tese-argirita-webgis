@@ -1,0 +1,476 @@
+{
+  "title": "Argirita · Atlas da tese",
+  "author": "Alex Santos",
+  "project": "Argirita_v05_escalas_padronizadas.qgz",
+  "date": "2026-10-20",
+  "bounds": [
+    [
+      -21.711601053,
+      -42.9205063479999
+    ],
+    [
+      -21.54570988,
+      -42.746681509
+    ]
+  ],
+  "themes": [
+    {
+      "id": "ic",
+      "name": "Unidades amostrais — IC observado",
+      "type": "vector",
+      "url": "data/ic.geojson",
+      "count": 220,
+      "legend": [
+        {
+          "label": "IC = 0",
+          "color": "#2c7bb6"
+        },
+        {
+          "label": "IC = 1",
+          "color": "#74add1"
+        },
+        {
+          "label": "IC = 2",
+          "color": "#abd9a4"
+        },
+        {
+          "label": "IC = 3",
+          "color": "#ffffbf"
+        },
+        {
+          "label": "IC = 4",
+          "color": "#fdae61"
+        },
+        {
+          "label": "IC = 5",
+          "color": "#f46d43"
+        },
+        {
+          "label": "IC = 6",
+          "color": "#d73027"
+        }
+      ],
+      "expression": "CATEGORIZED: idx ic_aud_final\n0::IC = 0::FILL SYMBOL (1 layers) color 44,123,182,255,rgb:0.17254901960784313,0.4823529411764706,0.71372549019607845,1:1\n1::IC = 1::FILL SYMBOL (1 layers) color 116,173,209,255,rgb:0.45490196078431372,0.67843137254901964,0.81960784313725488,1:1\n2::IC = 2::FILL SYMBOL (1 layers) color 171,217,164,255,rgb:0.6705882352941176,0.85098039215686272,0.64313725490196083,1:1\n3::IC = 3::FILL SYMBOL (1 layers) color 255,255,191,255,rgb:1,1,0.74901960784313726,1:1\n4::IC = 4::FILL SYMBOL (1 layers) color 253,174,97,255,rgb:0.99215686274509807,0.68235294117647061,0.38039215686274508,1:1\n5::IC = 5::FILL SYMBOL (1 layers) color 244,109,67,255,rgb:0.95686274509803926,0.42745098039215684,0.2627450980392157,1:1\n6::IC = 6::FILL SYMBOL (1 layers) color 215,48,39,255,rgb:0.84313725490196079,0.18823529411764706,0.15294117647058825,1:1\n"
+    },
+    {
+      "id": "ir",
+      "name": "Unidades amostrais — IR observado",
+      "type": "vector",
+      "url": "data/ir.geojson",
+      "count": 220,
+      "legend": [
+        {
+          "label": "Muito baixo (0,00–0,25)",
+          "color": "#d73027"
+        },
+        {
+          "label": "Baixo (>0,25–0,45)",
+          "color": "#f46d43"
+        },
+        {
+          "label": "Moderado (>0,45–0,65)",
+          "color": "#ffffbf"
+        },
+        {
+          "label": "Alto (>0,65–0,85)",
+          "color": "#66bd63"
+        },
+        {
+          "label": "Muito alto (>0,85–1,00)",
+          "color": "#2c7bb6"
+        }
+      ],
+      "expression": "GRADUATED: attr ir_aud_final\n0 - 0.25::Muito baixo (0,00–0,25)::FILL SYMBOL (1 layers) color 215,48,39,255,rgb:0.84313725490196079,0.18823529411764706,0.15294117647058825,1\n0.25 - 0.45::Baixo (>0,25–0,45)::FILL SYMBOL (1 layers) color 244,109,67,255,rgb:0.95686274509803926,0.42745098039215684,0.2627450980392157,1\n0.45 - 0.65::Moderado (>0,45–0,65)::FILL SYMBOL (1 layers) color 255,255,191,255,rgb:1,1,0.74901960784313726,1\n0.65 - 0.85::Alto (>0,65–0,85)::FILL SYMBOL (1 layers) color 102,189,99,255,rgb:0.40000000000000002,0.74117647058823533,0.38823529411764707,1\n0.85 - 1::Muito alto (>0,85–1,00)::FILL SYMBOL (1 layers) color 44,123,182,255,rgb:0.17254901960784313,0.4823529411764706,0.71372549019607845,1\n"
+    },
+    {
+      "id": "psv",
+      "name": "Configurações prioritárias P–S–V",
+      "type": "vector",
+      "url": "data/psv.geojson",
+      "count": 220,
+      "legend": [
+        {
+          "label": "111 — P + S + V",
+          "color": "#800026"
+        },
+        {
+          "label": "101 — P + V",
+          "color": "#e6550d"
+        },
+        {
+          "label": "110 — P + S",
+          "color": "#fdae6b"
+        },
+        {
+          "label": "Demais configurações",
+          "color": "#dcdcdc"
+        }
+      ],
+      "expression": "Rule-based renderer:\nRULE  - scale [0,0] - filter  - symbol []\n  RULE 111 — P + S + V - scale [0,0] - filter concat(to_string(\"p_aud_final\"),to_string(\"s_aud_final\"),to_string(\"v_aud_final\")) = '111' - symbol FILL SYMBOL (1 layers) color 128,0,38,255,rgb:0.50196078431372548,0,0.14901960784313725,1\n\n  RULE 101 — P + V - scale [0,0] - filter concat(to_string(\"p_aud_final\"),to_string(\"s_aud_final\"),to_string(\"v_aud_final\")) = '101' - symbol FILL SYMBOL (1 layers) color 230,85,13,230,rgb:0.90196078431372551,0.33333333333333331,0.05098039215686274,0.90196078431372551\n\n  RULE 110 — P + S - scale [0,0] - filter concat(to_string(\"p_aud_final\"),to_string(\"s_aud_final\"),to_string(\"v_aud_final\")) = '110' - symbol FILL SYMBOL (1 layers) color 253,174,107,230,rgb:0.99215686274509807,0.68235294117647061,0.41960784313725491,0.90196078431372551\n\n  RULE Demais configurações - scale [0,0] - filter ELSE - symbol FILL SYMBOL (1 layers) color 220,220,220,100,rgb:0.86274509803921573,0.86274509803921573,0.86274509803921573,0.39215686274509803\n"
+    },
+    {
+      "id": "p",
+      "name": "P — Pressão antrópica",
+      "type": "vector",
+      "url": "data/p.geojson",
+      "count": 220,
+      "legend": [
+        {
+          "label": "Ausente",
+          "color": "#f5f5f5"
+        },
+        {
+          "label": "Presente",
+          "color": "#e67e22"
+        }
+      ],
+      "expression": "CATEGORIZED: idx p_aud_final\n0::Ausente::FILL SYMBOL (1 layers) color 245,245,245,0,rgb:0.96078431372549022,0.96078431372549022,0.96078431372549022,0:1\n1::Presente::FILL SYMBOL (1 layers) color 230,126,34,220,rgb:0.90196078431372551,0.49411764705882355,0.13333333333333333,0.86274509803921573:1\n"
+    },
+    {
+      "id": "s",
+      "name": "S — Suscetibilidade ambiental",
+      "type": "vector",
+      "url": "data/s.geojson",
+      "count": 220,
+      "legend": [
+        {
+          "label": "Ausente",
+          "color": "#f5f5f5"
+        },
+        {
+          "label": "Presente",
+          "color": "#a67c52"
+        }
+      ],
+      "expression": "CATEGORIZED: idx s_aud_final\n0::Ausente::FILL SYMBOL (1 layers) color 245,245,245,0,rgb:0.96078431372549022,0.96078431372549022,0.96078431372549022,0:1\n1::Presente::FILL SYMBOL (1 layers) color 166,124,82,230,rgb:0.65098039215686276,0.48627450980392156,0.32156862745098042,0.90196078431372551:1\n"
+    },
+    {
+      "id": "v",
+      "name": "V — Vulnerabilidade",
+      "type": "vector",
+      "url": "data/v.geojson",
+      "count": 220,
+      "legend": [
+        {
+          "label": "Ausente",
+          "color": "#f5f5f5"
+        },
+        {
+          "label": "Presente",
+          "color": "#c0392b"
+        }
+      ],
+      "expression": "CATEGORIZED: idx v_aud_final\n0::Ausente::FILL SYMBOL (1 layers) color 245,245,245,0,rgb:0.96078431372549022,0.96078431372549022,0.96078431372549022,0:1\n1::Presente::FILL SYMBOL (1 layers) color 192,57,43,230,rgb:0.75294117647058822,0.22352941176470589,0.16862745098039217,0.90196078431372551:1\n"
+    },
+    {
+      "id": "u",
+      "name": "U — Potencial de uso/adaptação",
+      "type": "vector",
+      "url": "data/u.geojson",
+      "count": 220,
+      "legend": [
+        {
+          "label": "Ausente",
+          "color": "#f5f5f5"
+        },
+        {
+          "label": "Presente",
+          "color": "#2e7d32"
+        }
+      ],
+      "expression": "CATEGORIZED: idx u_aud_final\n0::Ausente::FILL SYMBOL (1 layers) color 245,245,245,0,rgb:0.96078431372549022,0.96078431372549022,0.96078431372549022,0:1\n1::Presente::FILL SYMBOL (1 layers) color 46,125,50,220,rgb:0.1803921568627451,0.49019607843137253,0.19607843137254902,0.86274509803921573:1\n"
+    },
+    {
+      "id": "ic-est",
+      "name": "IC estimado — krigagem ordinária",
+      "type": "raster",
+      "url": "assets/ic-est.png",
+      "bounds": [
+        [
+          -21.71345043003226,
+          -42.92278803055001
+        ],
+        [
+          -21.544099352198007,
+          -42.74455654156466
+        ]
+      ],
+      "legend": [
+        {
+          "label": "0",
+          "color": "#2c7bb6"
+        },
+        {
+          "label": "1",
+          "color": "#74add1"
+        },
+        {
+          "label": "2",
+          "color": "#abd9a4"
+        },
+        {
+          "label": "3",
+          "color": "#ffffbf"
+        },
+        {
+          "label": "4",
+          "color": "#fdae61"
+        },
+        {
+          "label": "5",
+          "color": "#f46d43"
+        },
+        {
+          "label": "6",
+          "color": "#d73027"
+        }
+      ]
+    },
+    {
+      "id": "ir-est",
+      "name": "IR estimado — krigagem ordinária",
+      "type": "raster",
+      "url": "assets/ir-est.png",
+      "bounds": [
+        [
+          -21.71345043003226,
+          -42.92278803055001
+        ],
+        [
+          -21.544099352198007,
+          -42.74455654156466
+        ]
+      ],
+      "legend": [
+        {
+          "label": "0,0",
+          "color": "#d73027"
+        },
+        {
+          "label": "0,2",
+          "color": "#f46d43"
+        },
+        {
+          "label": "0,4",
+          "color": "#fdae61"
+        },
+        {
+          "label": "0,6",
+          "color": "#ffffbf"
+        },
+        {
+          "label": "0,8",
+          "color": "#66bd63"
+        },
+        {
+          "label": "1,0",
+          "color": "#2c7bb6"
+        }
+      ]
+    },
+    {
+      "id": "ic-ep",
+      "name": "Erro-padrão da estimativa do IC",
+      "type": "raster",
+      "url": "assets/ic-ep.png",
+      "bounds": [
+        [
+          -21.71345043003226,
+          -42.92278803055001
+        ],
+        [
+          -21.544099352198007,
+          -42.74455654156466
+        ]
+      ],
+      "legend": [
+        {
+          "label": "1,40–1,44",
+          "color": "#f2f0f7"
+        },
+        {
+          "label": "1,44–1,49",
+          "color": "#cbc9e2"
+        },
+        {
+          "label": "1,49–1,53",
+          "color": "#9e9ac8"
+        },
+        {
+          "label": "1,53–1,58",
+          "color": "#756bb1"
+        },
+        {
+          "label": "1,58–1,62",
+          "color": "#54278f"
+        }
+      ]
+    },
+    {
+      "id": "ir-ep",
+      "name": "Erro-padrão da estimativa do IR",
+      "type": "raster",
+      "url": "assets/ir-ep.png",
+      "bounds": [
+        [
+          -21.71345043003226,
+          -42.92278803055001
+        ],
+        [
+          -21.544099352198007,
+          -42.74455654156466
+        ]
+      ],
+      "legend": [
+        {
+          "label": "0,200–0,208",
+          "color": "#f2f0f7"
+        },
+        {
+          "label": "0,208–0,216",
+          "color": "#cbc9e2"
+        },
+        {
+          "label": "0,216–0,224",
+          "color": "#9e9ac8"
+        },
+        {
+          "label": "0,224–0,232",
+          "color": "#756bb1"
+        },
+        {
+          "label": "0,232–0,240",
+          "color": "#54278f"
+        }
+      ]
+    }
+  ],
+  "context": [
+    {
+      "id": "limite",
+      "name": "Limite municipal",
+      "type": "vector",
+      "url": "data/limite.geojson",
+      "count": 1,
+      "legend": [
+        {
+          "label": "Limite municipal",
+          "color": "#111111"
+        }
+      ]
+    },
+    {
+      "id": "mascara",
+      "name": "Máscara do suporte geoestatístico",
+      "type": "vector",
+      "url": "data/mascara.geojson",
+      "count": 1,
+      "legend": [
+        {
+          "label": "Máscara do suporte geoestatístico",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "drenagem",
+      "name": "Rede de drenagem",
+      "type": "vector",
+      "url": "data/drenagem.geojson",
+      "count": 170,
+      "legend": [
+        {
+          "label": "Rede de drenagem",
+          "color": "#2878c8"
+        }
+      ]
+    },
+    {
+      "id": "vias",
+      "name": "Vias de deslocamento",
+      "type": "vector",
+      "url": "data/vias.geojson",
+      "count": 23,
+      "legend": [
+        {
+          "label": "Desconhecido",
+          "color": "#ff0000"
+        },
+        {
+          "label": "Outros",
+          "color": "#000000"
+        },
+        {
+          "label": "Pavimentado",
+          "color": "#a8483e"
+        },
+        {
+          "label": "Revestimento primário (solto)",
+          "color": "#a9a9a9"
+        },
+        {
+          "label": "Sem revestimento (leito natural)",
+          "color": "#ffffff"
+        },
+        {
+          "label": "Vias de deslocamento",
+          "color": "#80ee8b"
+        }
+      ]
+    },
+    {
+      "id": "cidade",
+      "name": "Cidade",
+      "type": "vector",
+      "url": "data/cidade.geojson",
+      "count": 1,
+      "legend": [
+        {
+          "label": "Cidade",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": "localidades",
+      "name": "Localidades",
+      "type": "vector",
+      "url": "data/localidades.geojson",
+      "count": 6,
+      "legend": [
+        {
+          "label": "Capital",
+          "color": "#ffffff"
+        },
+        {
+          "label": "Cidade",
+          "color": "#ffffff"
+        },
+        {
+          "label": "Vila",
+          "color": "#f7f7f7"
+        },
+        {
+          "label": "Aglomerado rural isolado",
+          "color": "#000000"
+        },
+        {
+          "label": "Núcleo Urbano",
+          "color": "#db1e2a"
+        }
+      ]
+    }
+  ],
+  "fields": [
+    "id_amostra",
+    "sample_id",
+    "p_aud_final",
+    "s_aud_final",
+    "v_aud_final",
+    "u_aud_final",
+    "ic_aud_final",
+    "ir_aud_final",
+    "classe_ic_aud_final",
+    "classe_ir_aud_final"
+  ]
+}
